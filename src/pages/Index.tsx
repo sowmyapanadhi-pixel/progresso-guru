@@ -7,6 +7,8 @@ import { Progress } from '@/components/ui/progress';
 import { CodeEditor } from '@/components/CodeEditor';
 import { ExerciseCard } from '@/components/ExerciseCard';
 import { TutorialStep } from '@/components/TutorialStep';
+import { TaskManager } from '@/components/TaskManager';
+import { PomodoroTimer } from '@/components/PomodoroTimer';
 import { 
   Code, 
   BookOpen, 
@@ -16,7 +18,8 @@ import {
   TrendingUp,
   Play,
   CheckCircle,
-  Clock
+  Clock,
+  Timer
 } from 'lucide-react';
 
 const Index = () => {
@@ -136,7 +139,7 @@ console.log(multiply(5, 3));`,
       <main className="container mx-auto px-6 py-8">
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
           {/* Tab Navigation */}
-          <TabsList className="grid w-full grid-cols-4 max-w-2xl">
+          <TabsList className="grid w-full grid-cols-5 max-w-3xl">
             <TabsTrigger value="dashboard" className="flex items-center space-x-2">
               <Target className="h-4 w-4" />
               <span>Dashboard</span>
@@ -148,6 +151,10 @@ console.log(multiply(5, 3));`,
             <TabsTrigger value="tutorials" className="flex items-center space-x-2">
               <BookOpen className="h-4 w-4" />
               <span>Tutorials</span>
+            </TabsTrigger>
+            <TabsTrigger value="tasks" className="flex items-center space-x-2">
+              <Timer className="h-4 w-4" />
+              <span>Time & Tasks</span>
             </TabsTrigger>
             <TabsTrigger value="code" className="flex items-center space-x-2">
               <Play className="h-4 w-4" />
@@ -257,6 +264,34 @@ console.log(multiply(5, 3));`,
                 // Update completion status
               }}
             />
+          </TabsContent>
+
+          {/* Time & Tasks Tab */}
+          <TabsContent value="tasks" className="space-y-6">
+            <Tabs defaultValue="tasks" className="space-y-6">
+              <TabsList className="grid w-full grid-cols-2 max-w-md">
+                <TabsTrigger value="tasks">Task Manager</TabsTrigger>
+                <TabsTrigger value="timer">Pomodoro Timer</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="tasks">
+                <TaskManager 
+                  onStartTimer={(taskId) => {
+                    console.log('Starting timer for task:', taskId);
+                    // Switch to timer tab when starting timer for a task
+                  }}
+                />
+              </TabsContent>
+              
+              <TabsContent value="timer">
+                <PomodoroTimer 
+                  onSessionComplete={(type, duration) => {
+                    console.log(`${type} session completed:`, duration, 'minutes');
+                    // Could update task time here
+                  }}
+                />
+              </TabsContent>
+            </Tabs>
           </TabsContent>
 
           {/* Code Editor Tab */}
