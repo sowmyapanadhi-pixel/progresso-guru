@@ -47,6 +47,31 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        // Code editor colors
+        editor: {
+          bg: "hsl(var(--editor-bg))",
+          foreground: "hsl(var(--editor-foreground))",
+          comment: "hsl(var(--code-comment))",
+          keyword: "hsl(var(--code-keyword))",
+          string: "hsl(var(--code-string))",
+          number: "hsl(var(--code-number))",
+          function: "hsl(var(--code-function))",
+          error: "hsl(var(--code-error))",
+          success: "hsl(var(--code-success))",
+        },
+        // Learning platform colors
+        progress: {
+          bg: "hsl(var(--progress-bg))",
+          fill: "hsl(var(--progress-fill))",
+        },
+        tutorial: {
+          highlight: "hsl(var(--tutorial-highlight))",
+        },
+        difficulty: {
+          easy: "hsl(var(--difficulty-easy))",
+          medium: "hsl(var(--difficulty-medium))",
+          hard: "hsl(var(--difficulty-hard))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
